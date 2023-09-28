@@ -9,12 +9,18 @@ public class CameraFol : MonoBehaviour
     
         public float FollowSpeed = 2f;
         public float yOffset = 1f;
-        public Transform target;
+
+        /*Deklarasi variable target untuk menyimpan GameObject Player*/
+        public Transform target; 
+
 
         // Update is called once per frame
         void Update()
         {
+            /*Store lokasi variable target. Yaitu player*/
             Vector3 newPos = new Vector3(target.position.x, target.position.y + yOffset, -10f);
+            
+            /*Memindahkan kamera ke newPos, yaitu lokasi player.*/
             transform.position = Vector3.Slerp(transform.position, newPos, FollowSpeed * Time.deltaTime);
         }
     

@@ -28,15 +28,37 @@ public class PlayerMov : MonoBehaviour
         // Normalize the movement vector to ensure constant speed in all directions.
         movement = new Vector2(horizontalInput, verticalInput).normalized;
 
-        
 
+        /*Menentukan rotasi senter dengan mendeteksi arah hadap player berdasarkan input dari GetAxisRaw*/
         if (verticalInput == 1)
         {
-            rotationAngle = 0f; // Up
+            if (horizontalInput == -1)
+            {
+                rotationAngle = 45f; // Up-Left
+            }
+            else if (horizontalInput == 1)
+            {
+                rotationAngle = -45f; // Up-Right
+            }
+            else
+            {
+                rotationAngle = 0f; // Up
+            }
         }
         else if (verticalInput == -1)
         {
-            rotationAngle = 180f; // Down
+            if (horizontalInput == -1)
+            {
+                rotationAngle = 135f; // Down-Left
+            }
+            else if (horizontalInput == 1)
+            {
+                rotationAngle = -135f; // Down-Right
+            }
+            else
+            {
+                rotationAngle = 180f; // Down
+            }
         }
         else if (horizontalInput == -1)
         {
@@ -47,11 +69,14 @@ public class PlayerMov : MonoBehaviour
             rotationAngle = -90f; // Right
         }
 
-        // Apply the rotation to the senter object.
+
+        // Gunakan ini jika ingin senter berputar secara instan
         /*        senter.localRotation = Quaternion.Euler(new Vector3(0, 0, rotationAngle));*/
+
+        /*Menyimpan target rotasi*/
         Quaternion targetRotation = Quaternion.Euler(new Vector3(0, 0, rotationAngle));
 
-        // Apply smooth rotation to the senter object.
+        /*Gunakan ini jika ingin senter rotasi pada axis z secara perlahan*/
         senter.localRotation = Quaternion.Slerp(senter.localRotation, targetRotation, Time.deltaTime * rotationSpeed);
 
     }
