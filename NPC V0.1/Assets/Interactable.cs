@@ -2,9 +2,11 @@
 using UnityEngine;
 
 using static UnityEditor.Experimental.GraphView.GraphView;
+using static UnityEditor.Progress;
 
 public class Interactable : MonoBehaviour
 {
+    public Item item;
     public float radius = 3f;
     Transform player;
     public Transform InteractionTransform;
@@ -50,7 +52,14 @@ public class Interactable : MonoBehaviour
 
         if (hasInteracted && Input.GetKeyDown(KeyCode.I))
         {
-            Destroy(gameObject);
+            bool wasPickedUp = Inventory.Instance.Add(item);
+            
+            if (wasPickedUp)
+            {
+                Destroy(gameObject);
+            }
+            
+           
         }
 
 
