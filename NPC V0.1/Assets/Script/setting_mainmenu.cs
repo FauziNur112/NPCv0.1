@@ -14,6 +14,7 @@ public class setting_mainmenu : MonoBehaviour
 
     public void PlayGame()
     {
+        /*Load Playing Scene ketika klik Start New Game*/
         SceneManager.LoadScene("SampleScene");
         Debug.Log("berhasil load");
     }

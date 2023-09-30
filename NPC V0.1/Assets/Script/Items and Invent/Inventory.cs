@@ -28,6 +28,8 @@ public class Inventory : MonoBehaviour
     public List<Item> items = new List<Item>();
     public bool Add(Item item)
     {
+        /*Mengecek jika item yang di inventori sudah sama dengan atau melebihi kapasitas (space) yang ditentukan
+        Jika benar, maka abort the function*/
         if (items.Count >= Space)
         {
             Debug.Log("Kebak Cok");
@@ -41,6 +43,7 @@ public class Inventory : MonoBehaviour
 
             if (onItemChangedCallback != null)
             {
+                /*Reference untuk script lain ketika fungsi ini dipanggil. Contohnya untuk UpdateUI inventory*/
                 onItemChangedCallback.Invoke();
             }
             
@@ -49,7 +52,8 @@ public class Inventory : MonoBehaviour
        
     }
 
-    public void Remove (Item item)
+    /*Dari tutoril ada fungsi remove tapi belum pasti akan dipakai tidak*/
+/*    public void Remove (Item item)
     {
         items.Remove(item);
         if (onItemChangedCallback != null)
@@ -57,6 +61,6 @@ public class Inventory : MonoBehaviour
             onItemChangedCallback.Invoke();
         }
 
-    }
+    }*/
 
 }
