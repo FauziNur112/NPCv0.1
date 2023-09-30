@@ -83,7 +83,7 @@ public class PlayerMov : MonoBehaviour
 
     void FixedUpdate()
     {
-        // Calculate the target position.
+        // Calculate the target position (Player).
         Vector2 targetPosition = rb.position + movement * moveSpeed * Time.fixedDeltaTime;
 
         // Move the player to the target position.
