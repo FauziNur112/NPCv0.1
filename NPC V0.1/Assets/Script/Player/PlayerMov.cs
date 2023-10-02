@@ -14,6 +14,11 @@ public class PlayerMov : MonoBehaviour
     public float senterMoveSpeed = 2f;
     Vector3 senterTargetPosition;
 
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
+
 
 
     void Update()
@@ -21,9 +26,9 @@ public class PlayerMov : MonoBehaviour
         // Get the input axis values.
         float horizontalInput = Input.GetAxisRaw("Horizontal");
         float verticalInput = Input.GetAxisRaw("Vertical");
-/*
+
         Debug.Log("Horizontal Input: " + horizontalInput);
-        Debug.Log("Vertical Input: " + verticalInput);*/
+        Debug.Log("Vertical Input: " + verticalInput);
 
         // Normalize the movement vector to ensure constant speed in all directions.
         movement = new Vector2(horizontalInput, verticalInput).normalized;
@@ -68,6 +73,7 @@ public class PlayerMov : MonoBehaviour
         {
             rotationAngle = -90f; // Right
         }
+
 
 
         // Gunakan ini jika ingin senter berputar secara instan

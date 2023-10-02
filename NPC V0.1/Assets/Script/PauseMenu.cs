@@ -59,7 +59,7 @@ public class PauseMenu : MonoBehaviour
     void bukamap()
     {
         diary.SetActive(true);
-        housemap = diary.transform.Find("housemaps").gameObject;
+        housemap = diary.transform.Find("maps").gameObject;
         housemap.SetActive(true);
         Time.timeScale = 0f;
         maps = true;
