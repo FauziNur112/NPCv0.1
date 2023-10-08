@@ -14,11 +14,11 @@ public class PlayerMov : MonoBehaviour
     public float senterMoveSpeed = 2f;
     Vector3 senterTargetPosition;
 
-/*    private void Awake()
+    private void Awake()
     {
         DontDestroyOnLoad(gameObject);
     }
-*/
+
 
 
     void Update()
