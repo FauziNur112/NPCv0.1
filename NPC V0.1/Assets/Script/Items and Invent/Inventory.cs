@@ -19,6 +19,7 @@ public class Inventory : MonoBehaviour
         Instance = this;
     }
     #endregion
+    public bool hasFlashlight = false;
 
     public int Space = 20;
 
@@ -46,7 +47,10 @@ public class Inventory : MonoBehaviour
                 /*Reference untuk script lain ketika fungsi ini dipanggil. Contohnya untuk UpdateUI inventory*/
                 onItemChangedCallback.Invoke();
             }
-            
+            if (item.name == "Senter")
+            {
+                Inventory.Instance.hasFlashlight = true;
+            }
         }
         return true;
        

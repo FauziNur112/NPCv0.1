@@ -29,6 +29,7 @@ public class Interactable : MonoBehaviour
     /*Fungsi yang dapat di over write ketika di panggil. Sebab masing2 item ada behaviour interact tersendiri*/
     public virtual void interact ()
     {
+      
         Debug.Log(hasInteracted);
     }
 
@@ -74,4 +75,5 @@ public class Interactable : MonoBehaviour
 
 
     }
+
 }

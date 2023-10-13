@@ -41,6 +41,11 @@ public class PauseMenu : MonoBehaviour
             }
         }
     }
+    private void Start()
+    {
+        // Pastikan peta (maps) tidak aktif pada awal mulai
+        diary.SetActive(false);
+    }
 
     public void Resume ()
     {

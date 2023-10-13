@@ -14,9 +14,18 @@ public class PlayerMov : MonoBehaviour
     public float senterMoveSpeed = 2f;
     Vector3 senterTargetPosition;
 
+    private bool isSenterOn = false;
+    public Light senterLight;
+
+
     private void Awake()
     {
+
         DontDestroyOnLoad(gameObject);
+        // Dapatkan komponen Light dari GameObject "senter" atau GameObject lampu senter
+        senterLight = senter.GetComponentInChildren<Light>();
+        isSenterOn = false;
+        senter.gameObject.SetActive(false); // Matikan senter saat permainan dimulai.   
     }
 
 
@@ -76,6 +85,30 @@ public class PlayerMov : MonoBehaviour
 
 
 
+        /*        if (Input.GetKeyDown(KeyCode.E))
+                {
+                    isSenterOn = !isSenterOn; // Toggle status senter (on/off)
+
+                    // Ganti visibilitas senter berdasarkan status senter
+                    senter.gameObject.SetActive(isSenterOn);
+                }
+        */
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (Inventory.Instance.hasFlashlight)
+            {
+                isSenterOn = !isSenterOn;
+                senter.gameObject.SetActive(isSenterOn);
+            }
+            else
+            {
+                // Tampilkan pesan bahwa pemain tidak memiliki senter
+                Debug.Log("Tidak memiliki senter!");
+            }
+        }
+
+
         // Gunakan ini jika ingin senter berputar secara instan
         /*        senter.localRotation = Quaternion.Euler(new Vector3(0, 0, rotationAngle));*/
 
@@ -96,5 +129,14 @@ public class PlayerMov : MonoBehaviour
         rb.MovePosition(targetPosition);
 
     }
+    void ToggleFlashlight(bool enable)
+    {
+        // Anda perlu mengakses komponen cahaya senter pada GameObject pemain
+        // atau pada GameObject yang memegang senter.
+        // Misalnya, jika cahaya senter ada pada GameObject pemain, Anda bisa melakukannya seperti ini:
+        Light senterLight = GetComponentInChildren<Light>();
 
+        // Aktifkan atau nonaktifkan cahaya sesuai parameter 'enable'.
+        senterLight.enabled = enable;
+    }
 }
