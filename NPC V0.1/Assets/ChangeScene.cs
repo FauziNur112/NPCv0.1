@@ -7,6 +7,7 @@ using static UnityEditor.Progress;
 public class ChangeScene : MonoBehaviour
 {
     public PlayerDots dots;
+    public GameObject mainhallway;
     private void OnTriggerEnter2D(Collider2D other)
     {
         // Check if the entering collider has a specific tag (optional).
@@ -15,7 +16,10 @@ public class ChangeScene : MonoBehaviour
             Debug.Log("Player entered the trigger zone.");
             // You can perform actions here when the player enters the trigger.
             dots.PindahDots(1);
-            SceneManager.LoadScene("MainHallway");
+/*            SceneManager.LoadScene("MainHallway");*/
+            mainhallway.SetActive(true);
+            this.gameObject.SetActive(false);
+            
             
 
         }
