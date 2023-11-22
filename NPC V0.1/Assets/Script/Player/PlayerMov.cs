@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class PlayerMov : MonoBehaviour
 {
@@ -13,13 +14,24 @@ public class PlayerMov : MonoBehaviour
     float rotationAngle = 0f;
     public float senterMoveSpeed = 2f;
     Vector3 senterTargetPosition;
+  
 
+    private bool isSenterOn = false;
+    public Light senterLight;
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        // Dapatkan referensi ke komponen Light2D dari senter
+        Light2D senterLight = senter.GetComponent<Light2D>();
+
+        // Periksa apakah senter memiliki komponen Light2D
+        if (senterLight != null)
+        {
+            // Matikan lampu senter
+            senterLight.enabled = false;
+        }
+
+        // Selanjutnya, tambahkan kode lain yang Anda butuhkan dalam metode Awake.
     }
-
-
 
     void Update()
     {
@@ -73,8 +85,47 @@ public class PlayerMov : MonoBehaviour
         {
             rotationAngle = -90f; // Right
         }
+        /*   if (Input.GetKeyDown(KeyCode.E))
+           {
+               if (Inventory.Instance.hasFlashlight)
+               {
+                   isSenterOn = !isSenterOn;
+                   senter.gameObject.SetActive(isSenterOn);
+               }
+               else
+               {
+                   // Tampilkan pesan bahwa pemain tidak memiliki senter
+                   Debug.Log("Tidak memiliki senter!");
+               }
+           }
 
+           // Check if the "E" key is pressed and the flashlight is already on.
+           if (Input.GetKeyDown(KeyCode.E) && isSenterOn)
+           {
+               isSenterOn = false;
+               senter.gameObject.SetActive(false);
+           }
+   */
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            // Periksa apakah pemain memiliki item "Senter" dalam inventori
+            if (HasSenterInInventory())
+            {
+                // Dapatkan referensi ke komponen Light2D dari senter
+                Light2D senterLight = senter.GetComponent<Light2D>();
 
+                // Periksa apakah senter memiliki komponen Light2D
+                if (senterLight != null)
+                {
+                    // Ganti status senter (nyalakan jika mati, atau matikan jika menyala)
+                    senterLight.enabled = !senterLight.enabled;
+                }
+            }
+            else
+            {
+                Debug.Log("Anda tidak memiliki senter dalam inventori.");
+            }
+        }
 
         // Gunakan ini jika ingin senter berputar secara instan
         /*        senter.localRotation = Quaternion.Euler(new Vector3(0, 0, rotationAngle));*/
@@ -87,6 +138,26 @@ public class PlayerMov : MonoBehaviour
 
     }
 
+    bool HasSenterInInventory()
+    {
+        // Di sini, Anda perlu mengganti ini dengan cara yang sesuai
+        // untuk memeriksa apakah pemain memiliki item "Senter" dalam inventori mereka
+        // Anda dapat menggunakan referensi ke skrip Inventory atau metode lain
+        // yang Anda gunakan untuk memeriksa inventori pemain.
+
+        // Contoh sederhana: cek apakah item dengan nama "Senter" ada dalam inventori
+        if (Inventory.Instance != null)
+        {
+            foreach (Item item in Inventory.Instance.items)
+            {
+                if (item.name == "Senter")
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
     void FixedUpdate()
     {
         // Calculate the target position (Player).

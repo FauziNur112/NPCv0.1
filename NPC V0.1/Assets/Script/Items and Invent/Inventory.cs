@@ -8,17 +8,18 @@ public class Inventory : MonoBehaviour
     #region Singleton
     public static Inventory Instance;
 
-     void Awake()
+    void Awake()
     {
         if (Instance != null)
         {
             Debug.LogWarning("Instance nya kebanyakan cok");
-           
+
             return;
         }
         Instance = this;
     }
     #endregion
+    public bool hasFlashlight = false;
 
     public int Space = 20;
 
@@ -46,21 +47,21 @@ public class Inventory : MonoBehaviour
                 /*Reference untuk script lain ketika fungsi ini dipanggil. Contohnya untuk UpdateUI inventory*/
                 onItemChangedCallback.Invoke();
             }
-            
+
         }
         return true;
-       
+
     }
 
     /*Dari tutoril ada fungsi remove tapi belum pasti akan dipakai tidak*/
-/*    public void Remove (Item item)
-    {
-        items.Remove(item);
-        if (onItemChangedCallback != null)
+    /*    public void Remove (Item item)
         {
-            onItemChangedCallback.Invoke();
-        }
+            items.Remove(item);
+            if (onItemChangedCallback != null)
+            {
+                onItemChangedCallback.Invoke();
+            }
 
-    }*/
+        }*/
 
 }
