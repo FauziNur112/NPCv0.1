@@ -29,7 +29,7 @@ public class settingmenu : MonoBehaviour
         float volume = masterSlider.value;
         /*Volume pertama adalah paramter variable audio mixer, volume kedua dari master slider*/
         audioMixer.SetFloat("volume", volume * -1 + 20);
-        /*        audioMixer.SetFloat("volume", Mathf.Log10(volume) * 2);*/
+        /*       audioMixer.SetFloat("volume", Mathf.Log10(volume) * 2);*/
         PlayerPrefs.SetFloat("masterVolume", volume);
     }
 
