@@ -28,7 +28,6 @@ public class LampuMainEnt : MonoBehaviour
             {
                 lampuMainent[0].SetActive(true);
                 Onoff = true;  
-         
             }
       
         }

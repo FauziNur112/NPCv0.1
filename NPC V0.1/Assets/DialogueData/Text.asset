@@ -19,8 +19,15 @@ MonoBehaviour:
   - 'Halo !!
 
     Ini Dialog ke 2'
+  - 'Halo !!
+
+    Ini Dialog ke 2'
   responses:
   - responseText: Yes
     dialogueObject: {fileID: 11400000, guid: 4e945efc48db1844fb3188320f831fee, type: 2}
+  - responseText: No
+    dialogueObject: {fileID: 11400000, guid: 836842765a64da64988eec151b69ef63, type: 2}
+  - responseText: No
+    dialogueObject: {fileID: 11400000, guid: 836842765a64da64988eec151b69ef63, type: 2}
   - responseText: No
     dialogueObject: {fileID: 11400000, guid: 836842765a64da64988eec151b69ef63, type: 2}

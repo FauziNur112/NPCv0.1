@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using static UnityEditor.Progress;
 
 public class PlayerMov : MonoBehaviour
 {
+
     public float moveSpeed = 5f;
     public Transform senter;
     public Rigidbody2D rb;
@@ -16,7 +18,7 @@ public class PlayerMov : MonoBehaviour
     Vector3 senterTargetPosition;
   
 
-    private bool isSenterOn = false;
+    private bool isSenterOn = false;    
     public Light senterLight;
     private void Awake()
     {
@@ -126,7 +128,7 @@ public class PlayerMov : MonoBehaviour
                 Debug.Log("Anda tidak memiliki senter dalam inventori.");
             }
         }
-
+      
         // Gunakan ini jika ingin senter berputar secara instan
         /*        senter.localRotation = Quaternion.Euler(new Vector3(0, 0, rotationAngle));*/
 
@@ -167,5 +169,4 @@ public class PlayerMov : MonoBehaviour
         rb.MovePosition(targetPosition);
 
     }
-
 }

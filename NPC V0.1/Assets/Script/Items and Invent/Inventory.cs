@@ -27,6 +27,43 @@ public class Inventory : MonoBehaviour
     public OnItemChanged onItemChangedCallback;
 
     public List<Item> items = new List<Item>();
+
+    public int batteriesNeeded = 5;
+    private int batteriesCollected = 0;
+
+    // Public property to access batteriesCollected
+    public int BatteriesCollected
+    {
+        get { return batteriesCollected; }
+    }
+
+    // ... (existing code)
+
+    public void OnBatteryPickedUp()
+    {
+        batteriesCollected++;
+
+        // Check if the player has collected enough batteries
+        if (batteriesCollected == batteriesNeeded)
+        {
+            // Notify other scripts about the quest completion
+            if (onItemChangedCallback != null)
+            {
+                onItemChangedCallback.Invoke();
+            }
+        }
+    }
+    public bool HasItem(string itemName)
+    {
+        foreach (Item item in items)
+        {
+            if (item.name == itemName)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
     public bool Add(Item item)
     {
         /*Mengecek jika item yang di inventori sudah sama dengan atau melebihi kapasitas (space) yang ditentukan
