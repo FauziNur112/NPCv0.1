@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class dialogueUI : MonoBehaviour
 {
-    [SerializeField] private GameObject dialogueBox;
+ public GameObject dialogueBox;
     [SerializeField] private TMP_Text textLabel;
     [SerializeField] private DialogueObject testDialogue;
 

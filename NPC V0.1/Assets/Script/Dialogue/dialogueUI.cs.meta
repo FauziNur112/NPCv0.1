@@ -3,7 +3,10 @@ guid: 72d3a985063da2c4d9e5e0339c4de5a7
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - dialogueBox: {instanceID: 0}
+  - textLabel: {instanceID: 0}
+  - testDialogue: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
