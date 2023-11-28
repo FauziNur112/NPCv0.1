@@ -11,7 +11,7 @@ public class NpcDialogue : MonoBehaviour
     private SpriteRenderer speechBubbleRenderer;
 
 
-    public dialogueUI dialogNPC;
+    dialogueUI dialogNPC;
 
     void Start()
     {
@@ -52,7 +52,7 @@ public class NpcDialogue : MonoBehaviour
         if(collision.gameObject.tag == "Player")
         {
             speechBubbleRenderer.enabled=false;
-            dialogNPC = FindObjectOfType<dialogueUI>();
+            dialogNPC = GameObject.FindGameObjectWithTag("dialog").GetComponent<dialogueUI>();
             dialogNPC.dg();
         }
     }

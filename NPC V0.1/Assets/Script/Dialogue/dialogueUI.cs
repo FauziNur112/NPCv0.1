@@ -14,7 +14,7 @@ public class dialogueUI : MonoBehaviour
 
     private void Start()
     {
-        dg();
+       
     }
 
     public void dg()
