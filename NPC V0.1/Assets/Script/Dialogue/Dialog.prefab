@@ -752,6 +752,7 @@ GameObject:
   - component: {fileID: 3098442626920865662}
   - component: {fileID: 8392704747604197586}
   - component: {fileID: 3750903762458622665}
+  - component: {fileID: 1962508891452014789}
   m_Layer: 5
   m_Name: Dialog
   m_TagString: Untagged
@@ -849,7 +850,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9079819116711034115}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 72d3a985063da2c4d9e5e0339c4de5a7, type: 3}
   m_Name: 
@@ -877,7 +878,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9079819116711034115}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b355c7853a77148448e200267f7c8104, type: 3}
   m_Name: 
@@ -886,6 +887,25 @@ MonoBehaviour:
   responseButtonTemplate: {fileID: 5037322105632126332}
   responseContainer: {fileID: 604250905141432546}
   responseSpacing: 10
+--- !u!114 &1962508891452014789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9079819116711034115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6141db138cf8b54ebd5644482deac92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 0}
+  Name: {fileID: 0}
+  rendererDialogueWindow: {fileID: 0}
+  listSentences: []
+  listName: []
+  listDialogueWindows: []
+  animeDialogueWindow: {fileID: 0}
 --- !u!1 &9208224245152598098
 GameObject:
   m_ObjectHideFlags: 0
