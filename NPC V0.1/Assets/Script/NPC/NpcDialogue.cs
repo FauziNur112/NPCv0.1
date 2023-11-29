@@ -9,7 +9,10 @@ public class NpcDialogue : MonoBehaviour
 
     private Transform player;
     private SpriteRenderer speechBubbleRenderer;
-   
+
+
+    dialogueUI dialogNPC;
+
     void Start()
     {
         speechBubbleRenderer = GetComponent<SpriteRenderer>();
@@ -19,9 +22,7 @@ public class NpcDialogue : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player" ) 
         { 
-
             speechBubbleRenderer.enabled=true;
-        
             player = collision.gameObject.GetComponent<Transform>();
 
             if (player.position.x > transform.position.x && transform.parent.localScale.x <0)
@@ -35,11 +36,24 @@ public class NpcDialogue : MonoBehaviour
         }
     }
 
+    public bool IsPlayerInRange(float range)
+    {
+        // Check if the player is in range based on the provided range
+        return Vector2.Distance(transform.position, player.position) <= range;
+    }
+    public void StartConversation()
+    {
+        // Show speech bubble or initiate dialogue here
+        speechBubbleRenderer.enabled = true;
+        // Add your code to initiate the dialogue sequence
+    }
     private void OnTriggerExit2D(Collider2D collision)
     {
         if(collision.gameObject.tag == "Player")
         {
             speechBubbleRenderer.enabled=false;
+            dialogNPC = GameObject.FindGameObjectWithTag("dialog").GetComponent<dialogueUI>();
+            dialogNPC.dg();
         }
     }
     private void Flib()

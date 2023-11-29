@@ -9,6 +9,8 @@ public class itemslot : MonoBehaviour
     public TMP_Text textMeshPro;
     Item item;
 
+
+
     public void AddItem (Item newItem)
     {
         item = newItem;
@@ -26,5 +28,7 @@ public class itemslot : MonoBehaviour
 
         icon.sprite = null;
         icon.enabled = false;
+        // Reset UI text style when clearing the slot
+        textMeshPro.fontStyle = FontStyles.Normal;
     }
 }

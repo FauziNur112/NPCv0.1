@@ -30,6 +30,12 @@ public class Interactable : MonoBehaviour
     public virtual void interact ()
     {
         Debug.Log(hasInteracted);
+
+        if (item != null && item.name == "Battery")
+        {
+            // Notify Inventory script about picking up a battery
+            Inventory.Instance.OnBatteryPickedUp();
+        }
     }
 
     void Start ()
@@ -68,10 +74,6 @@ public class Interactable : MonoBehaviour
             {
                 Destroy(gameObject);
             }
-            
-           
         }
-
-
     }
 }
