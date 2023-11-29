@@ -6,6 +6,10 @@ using static UnityEditor.Progress;
 
 public class PlayerMov : MonoBehaviour
 {
+    public int maxSanity = 100;
+    public int currentSanity;
+    public SanityBar sanitybar;
+
 
     public float moveSpeed = 5f;
     public Transform senter;
@@ -20,6 +24,14 @@ public class PlayerMov : MonoBehaviour
 
     private bool isSenterOn = false;    
     public Light senterLight;
+
+    void Start()
+    {
+        currentSanity = maxSanity;
+        sanitybar.SetMaxSanity(maxSanity);
+    }
+
+
     private void Awake()
     {
         // Dapatkan referensi ke komponen Light2D dari senter
@@ -128,6 +140,11 @@ public class PlayerMov : MonoBehaviour
                 Debug.Log("Anda tidak memiliki senter dalam inventori.");
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            TakeDamage(20);
+        }
       
         // Gunakan ini jika ingin senter berputar secara instan
         /*        senter.localRotation = Quaternion.Euler(new Vector3(0, 0, rotationAngle));*/
@@ -169,4 +186,10 @@ public class PlayerMov : MonoBehaviour
         rb.MovePosition(targetPosition);
 
     }
+
+    public void TakeDamage(int damage)
+    {
+        currentSanity -= damage;
+        sanitybar.SetSanity(currentSanity);
+    }   
 }
