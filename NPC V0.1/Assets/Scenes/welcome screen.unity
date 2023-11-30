@@ -349,6 +349,8 @@ GameObject:
   - component: {fileID: 789677869}
   - component: {fileID: 789677868}
   - component: {fileID: 789677871}
+  - component: {fileID: 789677873}
+  - component: {fileID: 789677872}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -483,6 +485,42 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tombolMulai: {fileID: 789677868}
+--- !u!95 &789677872
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 789677866}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2eb5169450cdadd48be6d390ce4735dd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!111 &789677873
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 789677866}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: e2db96cccaba6e943a76d062ec0f34c0, type: 2}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &978400910
 GameObject:
   m_ObjectHideFlags: 0
