@@ -65,7 +65,7 @@ public class PauseMenu : MonoBehaviour
         maps = true;
     }
 
-    public void tutupmap()
+    void tutupmap()
     {
         diary.SetActive(false);
         Time.timeScale = 1.0f;

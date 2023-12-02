@@ -16,6 +16,9 @@ public class PlayerMov : MonoBehaviour
     public Rigidbody2D rb;
     public float rotationSpeed = 2f;
 
+    public GameObject Booklet;
+    bool booklets = false;
+
     Vector2 movement;
     float rotationAngle = 0f;
     public float senterMoveSpeed = 2f;
@@ -141,10 +144,6 @@ public class PlayerMov : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            TakeDamage(20);
-        }
       
         // Gunakan ini jika ingin senter berputar secara instan
         /*        senter.localRotation = Quaternion.Euler(new Vector3(0, 0, rotationAngle));*/
@@ -155,6 +154,17 @@ public class PlayerMov : MonoBehaviour
         /*Gunakan ini jika ingin senter rotasi pada axis z secara perlahan*/
         senter.localRotation = Quaternion.Slerp(senter.localRotation, targetRotation, Time.deltaTime * rotationSpeed);
 
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            if (!booklets)
+            {
+                BukaBooklet();
+            }
+            else
+            {
+                TutupBooklet();
+            }
+        }
     }
 
     bool HasSenterInInventory()
@@ -191,5 +201,21 @@ public class PlayerMov : MonoBehaviour
     {
         currentSanity -= damage;
         sanitybar.SetSanity(currentSanity);
-    }   
+    }
+
+    private void BukaBooklet()
+    {
+        Booklet.SetActive(true);
+/*        housemap = diary.transform.Find("maps").gameObject;
+        housemap.SetActive(true);*/
+        Time.timeScale = 0f;
+        booklets = true;
+    }
+
+    private void TutupBooklet ()
+    {
+        Booklet.SetActive(false);
+        Time.timeScale = 1.0f;
+        booklets = false;
+    }
 }
