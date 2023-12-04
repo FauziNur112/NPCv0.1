@@ -158,6 +158,7 @@ public class PlayerMov : MonoBehaviour
         {
             if (!booklets)
             {
+                Debug.Log("Berhasil buka map");
                 BukaBooklet();
             }
             else

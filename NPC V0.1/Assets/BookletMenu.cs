@@ -10,7 +10,12 @@ public class BookletMenu : MonoBehaviour
     public GameObject Map;
     public GameObject Setting;
     public GameObject Inv;
+    public GameObject MenuAbout;
+    public GameObject MenuMap;
+    public GameObject MenuSetting;
+    public GameObject MenuInventory;
     GameObject Closing;
+    GameObject Menutup;
     
 
     bool obj;
@@ -26,7 +31,7 @@ public class BookletMenu : MonoBehaviour
         Instance = this;
         obj = true;
         BukaObj();
-        Active(Obj);
+        Active(Obj, MenuAbout);
     }
 
 
@@ -34,54 +39,59 @@ public class BookletMenu : MonoBehaviour
     {
         if (!obj)
         {
-            WillClose(Closing);
-            Active(Obj);
+            WillClose(Closing, Menutup);
+            Active(Obj, MenuAbout);
         } 
         DeActivate();
         obj = true;
         Closing = Obj;
+        Menutup = MenuAbout;
     }
 
     public void BukaMap()
     {
         if (!map)
         {
-            WillClose(Closing);
-            Active(Map);
+            WillClose(Closing, Menutup);
+            Active(Map, MenuMap);
         }
         DeActivate();
         map = true;
    
         Closing = Map;
+        Menutup = MenuMap;
     }
 
     public void BukaSetting()
     {
         if (!setting) 
         {
-            WillClose(Closing);
-            Active(Setting);
+            WillClose(Closing, Menutup);
+            Active(Setting, MenuSetting);
         }
         DeActivate();
         setting = true;
         Closing = Setting;
+        Menutup = MenuSetting;
     }
 
     public void BukaInv()
     {
         if (!inv)
         {
-            WillClose(Closing);
-            Active(Inv);
+            WillClose(Closing, Menutup);
+            Active(Inv, MenuInventory);
         }
         DeActivate();
         inv = true;
         Closing=Inv;
+        Menutup=MenuInventory;
     }
 
-    public void Active (GameObject Membuka) 
+    public void Active (GameObject Membuka, GameObject Melihat) 
     { 
         Membuka.transform.localPosition -= new Vector3(20, 0, 0);
+        Melihat.SetActive(true);
     }
 
     public void DeActivate ()
@@ -93,8 +103,9 @@ public class BookletMenu : MonoBehaviour
         
     }
 
-    private void WillClose (GameObject Closing)
+    private void WillClose (GameObject Closing, GameObject Menutup)
     {
         Closing.transform.localPosition += new Vector3(20, 0, 0);
+        Menutup.SetActive(false);
     }
 }
