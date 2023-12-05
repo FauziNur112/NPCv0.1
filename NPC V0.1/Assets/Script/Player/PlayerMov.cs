@@ -69,8 +69,10 @@ public class PlayerMov : MonoBehaviour
         /* 
          animator.SetFloat("Vertical", movement.y);
          */
+
         animator.SetFloat("Speed", movement.sqrMagnitude);
-        animator.SetFloat("Horizontal", movement.x);
+        animator.SetFloat("horizontal", horizontalInput);
+        animator.SetFloat("Vertikal", verticalInput);
 
         /*Menentukan rotasi senter dengan mendeteksi arah hadap player berdasarkan input dari GetAxisRaw*/
         if (verticalInput == 1)
@@ -78,12 +80,12 @@ public class PlayerMov : MonoBehaviour
             if (horizontalInput == -1)
             {
                 rotationAngle = 45f; // Up-Left
-                animator.SetFloat("Vertical", movement.y);
+
             }
             else if (horizontalInput == 1)
             {
                 rotationAngle = -45f; // Up-Right
-                animator.SetFloat("Vertical", movement.y);
+
             }
             else
             {
@@ -94,26 +96,26 @@ public class PlayerMov : MonoBehaviour
         {
             if (horizontalInput == -1)
             {
-                animator.SetFloat("Vertical", movement.y);
+
 
                 rotationAngle = 135f; // Down-Left
             }
             else if (horizontalInput == 1)
             {
-                animator.SetFloat("Vertical", movement.y);
+ 
 
                 rotationAngle = -135f; // Down-Right
             }
             else
             {
-                animator.SetFloat("Vertical", movement.y);
+
 
                 rotationAngle = 180f; // Down
             }
         }
         else if (horizontalInput == -1)
         {
-            animator.SetFloat("Horizontal", movement.x);
+
 
             rotationAngle = 90f; // Left
         }
