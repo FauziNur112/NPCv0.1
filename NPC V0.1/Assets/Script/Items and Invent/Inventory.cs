@@ -21,7 +21,7 @@ public class Inventory : MonoBehaviour
     #endregion
     public bool hasFlashlight = false;
 
-    public int Space = 20;
+    public int Space;
 
     public delegate void OnItemChanged();
     public OnItemChanged onItemChangedCallback;
@@ -32,14 +32,14 @@ public class Inventory : MonoBehaviour
     private int batteriesCollected = 0;
 
     // Public property to access batteriesCollected
-    public int BatteriesCollected
+/*    public int BatteriesCollected
     {
         get { return batteriesCollected; }
-    }
+    }*/
 
     // ... (existing code)
 
-    public void OnBatteryPickedUp()
+/*    public void OnBatteryPickedUp()
     {
         batteriesCollected++;
 
@@ -52,7 +52,7 @@ public class Inventory : MonoBehaviour
                 onItemChangedCallback.Invoke();
             }
         }
-    }
+    }*/
     public bool HasItem(string itemName)
     {
         foreach (Item item in items)

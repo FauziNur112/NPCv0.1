@@ -29,7 +29,8 @@ public class PlayerMov : MonoBehaviour
 
 
     private bool isSenterOn = false;    
-    public Light senterLight;
+    public GameObject Senter;
+    public bool nyala = false;
 
     void Start()
     {
@@ -59,8 +60,8 @@ public class PlayerMov : MonoBehaviour
         float horizontalInput = Input.GetAxisRaw("Horizontal");
         float verticalInput = Input.GetAxisRaw("Vertical");
 
-        Debug.Log("Horizontal Input: " + horizontalInput);
-        Debug.Log("Vertical Input: " + verticalInput);
+/*        Debug.Log("Horizontal Input: " + horizontalInput);
+        Debug.Log("Vertical Input: " + verticalInput);*/
 
 
         // Normalize the movement vector to ensure constant speed in all directions.
@@ -144,6 +145,26 @@ public class PlayerMov : MonoBehaviour
                senter.gameObject.SetActive(false);
            }
    */
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            bool OnOffSenter = Inventory.Instance.HasItem("senter");
+            if (OnOffSenter)
+            {
+                if (!nyala)
+                {
+                    Senter.SetActive(true);
+                    nyala = true;
+                } else
+                {
+                    Senter.SetActive(false);
+                }   
+            } else 
+            {
+                Debug.Log("Lu gak punya senter");
+            }
+        }
+
+
         if (Input.GetKeyDown(KeyCode.E))
         {
             // Periksa apakah pemain memiliki item "Senter" dalam inventori

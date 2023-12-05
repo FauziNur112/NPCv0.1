@@ -20,10 +20,10 @@ public class QuestUI : MonoBehaviour
     private void UpdateQuestUI()
     {
         // Check if the quest is completed
-        if (Inventory.Instance.BatteriesCollected == Inventory.Instance.batteriesNeeded)
+/*        if (Inventory.Instance.BatteriesCollected == Inventory.Instance.batteriesNeeded)
         {
             // Update the UI text with strikethrough effect
             questText.text = "<s>Quest: Collect 5 Batteries</s>";
-        }
+        }*/
     }
 }

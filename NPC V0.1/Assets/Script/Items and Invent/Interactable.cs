@@ -31,11 +31,11 @@ public class Interactable : MonoBehaviour
     {
         Debug.Log(hasInteracted);
 
-        if (item != null && item.name == "Battery")
+/*        if (item != null && item.name == "Battery")
         {
             // Notify Inventory script about picking up a battery
             Inventory.Instance.OnBatteryPickedUp();
-        }
+        }*/
     }
 
     void Start ()

@@ -1,12 +1,12 @@
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
+
 
 
 public class itemslot : MonoBehaviour
 {
     public Image icon;
-    public TMP_Text textMeshPro;
+/*    public TMP_Text textMeshPro;*/
     Item item;
 
 
@@ -17,8 +17,8 @@ public class itemslot : MonoBehaviour
         icon.sprite = item.Icon;
         icon.enabled = true;
 
-        textMeshPro.text = item.name;
-        textMeshPro.enabled = true;
+/*        textMeshPro.text = item.name;
+        textMeshPro.enabled = true;*/
 
     }
 
@@ -29,6 +29,6 @@ public class itemslot : MonoBehaviour
         icon.sprite = null;
         icon.enabled = false;
         // Reset UI text style when clearing the slot
-        textMeshPro.fontStyle = FontStyles.Normal;
+/*        textMeshPro.fontStyle = FontStyles.Normal;*/
     }
 }
