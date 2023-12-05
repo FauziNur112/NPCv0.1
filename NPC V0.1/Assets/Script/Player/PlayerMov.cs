@@ -23,7 +23,10 @@ public class PlayerMov : MonoBehaviour
     float rotationAngle = 0f;
     public float senterMoveSpeed = 2f;
     Vector3 senterTargetPosition;
-  
+
+
+    public Animator animator;
+
 
     private bool isSenterOn = false;    
     public Light senterLight;
@@ -59,9 +62,15 @@ public class PlayerMov : MonoBehaviour
         Debug.Log("Horizontal Input: " + horizontalInput);
         Debug.Log("Vertical Input: " + verticalInput);
 
+
         // Normalize the movement vector to ensure constant speed in all directions.
         movement = new Vector2(horizontalInput, verticalInput).normalized;
 
+        /* 
+         animator.SetFloat("Vertical", movement.y);
+         */
+        animator.SetFloat("Speed", movement.sqrMagnitude);
+        animator.SetFloat("Horizontal", movement.x);
 
         /*Menentukan rotasi senter dengan mendeteksi arah hadap player berdasarkan input dari GetAxisRaw*/
         if (verticalInput == 1)
@@ -69,10 +78,12 @@ public class PlayerMov : MonoBehaviour
             if (horizontalInput == -1)
             {
                 rotationAngle = 45f; // Up-Left
+                animator.SetFloat("Vertical", movement.y);
             }
             else if (horizontalInput == 1)
             {
                 rotationAngle = -45f; // Up-Right
+                animator.SetFloat("Vertical", movement.y);
             }
             else
             {
@@ -83,19 +94,27 @@ public class PlayerMov : MonoBehaviour
         {
             if (horizontalInput == -1)
             {
+                animator.SetFloat("Vertical", movement.y);
+
                 rotationAngle = 135f; // Down-Left
             }
             else if (horizontalInput == 1)
             {
+                animator.SetFloat("Vertical", movement.y);
+
                 rotationAngle = -135f; // Down-Right
             }
             else
             {
+                animator.SetFloat("Vertical", movement.y);
+
                 rotationAngle = 180f; // Down
             }
         }
         else if (horizontalInput == -1)
         {
+            animator.SetFloat("Horizontal", movement.x);
+
             rotationAngle = 90f; // Left
         }
         else if (horizontalInput == 1)
