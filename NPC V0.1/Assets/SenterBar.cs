@@ -9,7 +9,8 @@ public class SenterBar : MonoBehaviour
     public Slider Senterslider;
     public int maxSenter = 100;
     public int currentSenter;
-
+    public bool senternyala;
+    public bool powerBerkurang = false;
     private void Start()
     {
         currentSenter= maxSenter;
@@ -18,15 +19,20 @@ public class SenterBar : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(PlayerMov.nyala);
-        if (PlayerMov.nyala)
+        if (!powerBerkurang)
         {
-            Debug.Log("Sampai disini berhasil");
-            StartCoroutine("SenterPower");
-        } else
-        {
-            StopCoroutine("SenterPower");
-        }
+            if (PlayerMov.senternyalatidak)
+            {
+                Debug.Log("Sampai disini berhasil");
+                StartCoroutine("SenterPower");
+                powerBerkurang= true;
+            }
+            else
+            {
+                StopCoroutine("SenterPower");
+            }
+        } 
+        
     }
     public void SetMaxSenter(int senter)
     {
@@ -45,14 +51,12 @@ public class SenterBar : MonoBehaviour
         setSenter(currentSenter);
     }
 
-    IEnumerator SenterPower(bool senterNyala)
+    public IEnumerator SenterPower()
     {
-/*        while (senterNyala == true)
-        {*/
+        while (PlayerMov.senternyalatidak)
+        {
             TakePower(2);
             yield return new WaitForSeconds(1);
-/*        }*/
-        Debug.Log("Masih Jalan");
-
+        }
     }
 }

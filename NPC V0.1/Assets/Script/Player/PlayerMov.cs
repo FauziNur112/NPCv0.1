@@ -30,7 +30,9 @@ public class PlayerMov : MonoBehaviour
 
     private bool isSenterOn = false;    
     public GameObject Senter;
-    public bool nyala = false;
+    public SenterBar senterBar;
+    public bool senternyalatidak;
+
 
     void Start()
     {
@@ -145,30 +147,33 @@ public class PlayerMov : MonoBehaviour
                senter.gameObject.SetActive(false);
            }
    */
-        if (Input.GetKeyDown(KeyCode.E))
+        /*if (Input.GetKeyDown(KeyCode.E))
         {
             bool OnOffSenter = Inventory.Instance.HasItem("senter");
             if (OnOffSenter)
             {
                 if (!nyala)
                 {
+                    Debug.Log("NYALA");
                     Senter.SetActive(true);
-                    nyala = true;
+                    senterBar.senternyala = true;
                 } else
                 {
                     Senter.SetActive(false);
+                    senterBar.senternyala = false;
+                    Debug.Log("MATI");
                 }   
             } else 
             {
                 Debug.Log("Lu gak punya senter");
             }
-        }
+        }*/
 
 
         if (Input.GetKeyDown(KeyCode.E))
         {
             // Periksa apakah pemain memiliki item "Senter" dalam inventori
-            if (HasSenterInInventory())
+            if (Inventory.Instance.HasItem("Senter"))
             {
                 // Dapatkan referensi ke komponen Light2D dari senter
                 Light2D senterLight = senter.GetComponent<Light2D>();
@@ -178,6 +183,14 @@ public class PlayerMov : MonoBehaviour
                 {
                     // Ganti status senter (nyalakan jika mati, atau matikan jika menyala)
                     senterLight.enabled = !senterLight.enabled;
+                    if (senterLight.enabled)
+                    {
+                        senternyalatidak = true;
+                    } else
+                    {
+                        senternyalatidak = false;
+                        senterBar.powerBerkurang = false;
+                    }
                 }
             }
             else
@@ -225,7 +238,7 @@ public class PlayerMov : MonoBehaviour
                 if (item.name == "Senter")
                 {
                     return true;
-                }
+                } 
             }
         }
         return false;
