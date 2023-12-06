@@ -8,6 +8,7 @@ public class SenterBar : MonoBehaviour
     public PlayerMov PlayerMov;
     public Slider Senterslider;
     public int maxSenter = 100;
+    int minSenter = 0;
     public int currentSenter;
     public bool senternyala;
     public bool powerBerkurang = false;
@@ -19,6 +20,8 @@ public class SenterBar : MonoBehaviour
 
     void Update()
     {
+        currentSenter = Mathf.Clamp(currentSenter, minSenter, maxSenter);
+
         if (!powerBerkurang)
         {
             if (PlayerMov.senternyalatidak)
@@ -58,5 +61,11 @@ public class SenterBar : MonoBehaviour
             TakePower(2);
             yield return new WaitForSeconds(1);
         }
+    }
+
+    public void TambahPower()
+    {
+        currentSenter += 20;
+        setSenter(currentSenter);
     }
 }

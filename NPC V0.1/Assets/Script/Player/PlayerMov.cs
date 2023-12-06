@@ -32,12 +32,14 @@ public class PlayerMov : MonoBehaviour
     public GameObject Senter;
     public SenterBar senterBar;
     public bool senternyalatidak;
+    Light2D senterLight;
 
 
     void Start()
     {
         currentSanity = maxSanity;
         sanitybar.SetMaxSanity(maxSanity);
+        senterLight = senter.GetComponent<Light2D>();
     }
 
 
@@ -176,10 +178,10 @@ public class PlayerMov : MonoBehaviour
             if (Inventory.Instance.HasItem("Senter"))
             {
                 // Dapatkan referensi ke komponen Light2D dari senter
-                Light2D senterLight = senter.GetComponent<Light2D>();
+                
 
                 // Periksa apakah senter memiliki komponen Light2D
-                if (senterLight != null)
+                if (senterLight != null && senterBar.currentSenter > 0)
                 {
                     // Ganti status senter (nyalakan jika mati, atau matikan jika menyala)
                     senterLight.enabled = !senterLight.enabled;
@@ -197,6 +199,14 @@ public class PlayerMov : MonoBehaviour
             {
                 Debug.Log("Anda tidak memiliki senter dalam inventori.");
             }
+        }
+
+        if (senterBar.currentSenter == 0 && senternyalatidak)
+        {
+            
+            senterLight.enabled = !senterLight.enabled;
+            senternyalatidak = false;
+            senterBar.powerBerkurang = false;
         }
 
       
@@ -221,6 +231,8 @@ public class PlayerMov : MonoBehaviour
                 TutupBooklet();
             }
         }
+
+  
     }
 
     bool HasSenterInInventory()

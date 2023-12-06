@@ -9,4 +9,8 @@ public class Item : ScriptableObject
     public Sprite Icon = null;
     public bool IsDefaultItem = false;
 
+    public virtual void OnUse()
+    {
+
+    }
 }
