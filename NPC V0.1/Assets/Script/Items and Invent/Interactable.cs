@@ -13,6 +13,8 @@ public class Interactable : MonoBehaviour
     public bool hasInteracted = false;
     public SenterBar senterBar;
 
+
+
     private void OnDrawGizmosSelected()
     { 
         /*Deklatasi jika gameObjecy dari interactionTransform belum di assign, maka automatis assign ke gameObject 
@@ -77,17 +79,6 @@ public class Interactable : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            if (Inventory.Instance.HasItem("Baterai"))
-            {
-                Debug.Log("Sampai sini");
-                senterBar.TambahPower();
-            }
-            else
-            {
-                Debug.Log("LU KAGAK PUNYA BATRE COK");
-            }
-        }
+
     }
 }

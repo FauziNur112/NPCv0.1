@@ -209,7 +209,21 @@ public class PlayerMov : MonoBehaviour
             senterBar.powerBerkurang = false;
         }
 
-      
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            if (Inventory.Instance.HasItem("Baterai"))
+            {
+                Debug.Log("Sampai sini");
+                senterBar.TambahPower();
+                Inventory.Instance.FindAndDestroy("Baterai");
+            }
+            else
+            {
+                Debug.Log("LU KAGAK PUNYA BATRE COK");
+            }
+        }
+
+
         // Gunakan ini jika ingin senter berputar secara instan
         /*        senter.localRotation = Quaternion.Euler(new Vector3(0, 0, rotationAngle));*/
 

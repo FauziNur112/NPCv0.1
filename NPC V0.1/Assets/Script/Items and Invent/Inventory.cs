@@ -64,6 +64,18 @@ public class Inventory : MonoBehaviour
         }
         return false;
     }
+
+    public void FindAndDestroy(string itemToDestroy)
+    {
+        foreach (Item item in items)
+        {
+            if (item.name == itemToDestroy)
+            {
+                items.Remove(item);
+                return;
+            }
+        }
+    }
     public bool Add(Item item)
     {
         /*Mengecek jika item yang di inventori sudah sama dengan atau melebihi kapasitas (space) yang ditentukan
