@@ -72,6 +72,11 @@ public class Inventory : MonoBehaviour
             if (item.name == itemToDestroy)
             {
                 items.Remove(item);
+                if (onItemChangedCallback != null)
+                {
+                    /*Reference untuk script lain ketika fungsi ini dipanggil. Contohnya untuk UpdateUI inventory*/
+                    onItemChangedCallback.Invoke();
+                }
                 return;
             }
         }
