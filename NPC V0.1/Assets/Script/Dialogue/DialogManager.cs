@@ -4,12 +4,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.Playables;
 
 public class DialogManager : MonoBehaviour
 {
     public TMP_Text actorName;
     public TMP_Text message;
     public GameObject dialogBox;
+    public PlayableDirector Timeline;
 
     Message[] currentMessages;
     Actor[] currentActor;
@@ -24,6 +26,7 @@ public class DialogManager : MonoBehaviour
         isActive = true;
         Debug.Log("Panjang pesan " + messages.Length);
         DisplayMessagge();
+        
     }
 
     void DisplayMessagge ()
@@ -47,6 +50,9 @@ public class DialogManager : MonoBehaviour
             Debug.Log("Tidak ada message");
             isActive = false;
             dialogBox.SetActive(false);
+            /*            Timeline.time = 1f;
+                        Timeline.playableGraph.GetRootPlayable(0).SetSpeed(1f);*/
+            Timeline.playableGraph.GetRootPlayable(0).Play();
         }
     }
 
