@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Inventory : MonoBehaviour
+public class Inventory : MonoBehaviour, IDataPersistence
 {
     #region Singleton
     public static Inventory Instance;
@@ -107,6 +107,43 @@ public class Inventory : MonoBehaviour
 
     }
 
+    public void LoadData(GameData data)
+    {
+            this.items = data.items;
+
+        
+/*        onItemChangedCallback.Invoke();*/
+        /*for (int i = 0; i < items.Count; i++)
+        {
+            if (i < items.Count)
+            {
+                items.Add(items[i]);
+            }
+            else
+            {
+                
+            }
+        }*/
+    }
+
+    public void SaveData(ref GameData data)
+    {
+
+        data.items = this.items;
+        /*for (int i = 0; i < items.Count; i++)
+        {
+            Debug.Log("Save Items sampai sini!!!");
+            if (i < items.Count)
+            {
+                data.items.Add(items[i].name);
+            }
+            else
+            {
+
+            }
+        }*/
+    }
+
     /*Dari tutoril ada fungsi remove tapi belum pasti akan dipakai tidak*/
     /*    public void Remove (Item item)
         {
@@ -117,5 +154,5 @@ public class Inventory : MonoBehaviour
             }
 
         }*/
-   
+
 }

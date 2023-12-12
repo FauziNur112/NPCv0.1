@@ -1,16 +1,24 @@
 
 using UnityEngine;
+using UnityEngine.VFX;
 
-
-
-public class Interactable : MonoBehaviour
+public class Interactable : MonoBehaviour, IDataPersistence
 {
+    [SerializeField] private string id;
+    [ContextMenu("Generate Guid for id")]
+    private void GenerateGuid()
+    {
+        id = System.Guid.NewGuid().ToString();
+    }
+
     public Item item;
     public float radius = 3f;
     Transform player;
     public Transform InteractionTransform;
     public bool hasInteracted = false;
     public SenterBar senterBar;
+    public bool diambil = false;
+    public bool wasPickedUp;
 
 
 
@@ -69,8 +77,8 @@ public class Interactable : MonoBehaviour
         yang berada di scene akan dihapus*/
         if (hasInteracted && Input.GetKeyDown(KeyCode.I))
         {
-            bool wasPickedUp = Inventory.Instance.Add(item);
-            
+            wasPickedUp  = Inventory.Instance.Add(item);
+
             /*Merujuk dari script inventory, jika item benar diambil maka gameObject item akan dihancurkan.*/
             if (wasPickedUp)
             {
@@ -80,4 +88,23 @@ public class Interactable : MonoBehaviour
 
 
     }
+
+    public void LoadData(GameData data)
+    {
+        data.itemcollected.TryGetValue(id, out wasPickedUp);
+        if (wasPickedUp)
+        {
+            gameObject.SetActive(false);
+        }
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        if (data.itemcollected.ContainsKey(id))
+        {
+            data.itemcollected.Remove(id);
+        }
+        data.itemcollected.Add(id, wasPickedUp);
+    }
+
 }

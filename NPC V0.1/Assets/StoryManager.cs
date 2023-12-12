@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
+using UnityEngine.Rendering.Universal;
 
 public class StoryManager : MonoBehaviour
 {
@@ -10,7 +11,8 @@ public class StoryManager : MonoBehaviour
     public Objectives objectives;
     public GameObject listTujuan;
     public GameObject UIPanel;
-    int urutanStory = 0;
+    public int urutanStory = 0;
+    public Light2D lampuGlobal;
     // Start is called before the first frame update
     void Start()
     {
@@ -57,8 +59,14 @@ public class StoryManager : MonoBehaviour
             break;
             
             case 1:
-            objectives.actTwo();
+                objectives.actTwo();
                 listTujuan.SetActive(true);
+                break;
+            case 2:
+                objectives.actThree();
+                listTujuan.SetActive(true);
+                lampuGlobal.enabled = true;
+                lampuGlobal.intensity = 0;
                 break;
         }
     }

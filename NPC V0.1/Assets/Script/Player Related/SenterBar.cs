@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SenterBar : MonoBehaviour
+public class SenterBar : MonoBehaviour, IDataPersistence
 {
     public PlayerMov PlayerMov;
     public Slider Senterslider;
@@ -14,8 +14,9 @@ public class SenterBar : MonoBehaviour
     public bool powerBerkurang = false;
     private void Start()
     {
-        currentSenter= maxSenter;
+
         SetMaxSenter(maxSenter);
+        setSenter(currentSenter);
     }
 
     void Update()
@@ -67,5 +68,15 @@ public class SenterBar : MonoBehaviour
     {
         currentSenter += 20;
         setSenter(currentSenter);
+    }
+
+    public void LoadData(GameData data)
+    {
+        this.currentSenter = data.currentSenter;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.currentSenter = this.currentSenter;
     }
 }

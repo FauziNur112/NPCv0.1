@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using static UnityEditor.Progress;
 
-public class PlayerMov : MonoBehaviour
+public class PlayerMov : MonoBehaviour, IDataPersistence
 {
     public int maxSanity = 100;
     public int currentSanity;
@@ -40,8 +40,8 @@ public class PlayerMov : MonoBehaviour
 
     void Start()
     {
-        currentSanity = maxSanity;
         sanitybar.SetMaxSanity(maxSanity);
+        sanitybar.SetSanity(currentSanity);
         senterLight = senter.GetComponent<Light2D>();
 /*        senterorderoflayer = Senter.GetComponent<SpriteRenderer>();*/
     }
@@ -304,5 +304,16 @@ public class PlayerMov : MonoBehaviour
         Booklet.SetActive(false);
         Time.timeScale = 1.0f;
         booklets = false;
+    }
+
+    public void LoadData(GameData data)
+    {
+        this.currentSanity = data.currentSanity;
+        sanitybar.SetSanity(currentSanity);
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.currentSanity = this.currentSanity;
     }
 }
