@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.PackageManager.UI;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using static UnityEditor.Progress;
@@ -15,6 +16,7 @@ public class PlayerMov : MonoBehaviour
     public Transform senter;
     public Rigidbody2D rb;
     public float rotationSpeed = 2f;
+
 
     public GameObject Booklet;
     bool booklets = false;
@@ -33,6 +35,7 @@ public class PlayerMov : MonoBehaviour
     public SenterBar senterBar;
     public bool senternyalatidak;
     Light2D senterLight;
+    SpriteRenderer senterorderoflayer;
 
 
     void Start()
@@ -40,6 +43,7 @@ public class PlayerMov : MonoBehaviour
         currentSanity = maxSanity;
         sanitybar.SetMaxSanity(maxSanity);
         senterLight = senter.GetComponent<Light2D>();
+/*        senterorderoflayer = Senter.GetComponent<SpriteRenderer>();*/
     }
 
 
@@ -116,6 +120,7 @@ public class PlayerMov : MonoBehaviour
 
 
                 rotationAngle = 180f; // Down
+/*                senterorderoflayer.sortingOrder = 2*/;
             }
         }
         else if (horizontalInput == -1)

@@ -1,8 +1,7 @@
 
 using UnityEngine;
 
-using static UnityEditor.Experimental.GraphView.GraphView;
-using static UnityEditor.Progress;
+
 
 public class Interactable : MonoBehaviour
 {

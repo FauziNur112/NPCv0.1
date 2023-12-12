@@ -19,7 +19,6 @@ public class itemslot : MonoBehaviour
 
 /*        textMeshPro.text = item.name;
         textMeshPro.enabled = true;*/
-
     }
 
     public void ClearSlot ()
