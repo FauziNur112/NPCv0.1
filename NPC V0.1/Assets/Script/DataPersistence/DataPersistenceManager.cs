@@ -2,22 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using TMPro;
 
 public class DataPersistenceManager : MonoBehaviour
 {
     [Header("File Storage Config")]
     [SerializeField] private string fileName;
 
-
+    public GameObject AssignName;
     private GameData gameData;
     private List<IDataPersistence> dataPersistenceObjects;
     public static DataPersistenceManager Instance { get; private set; }
 
     private FileDataHandler dataHandler;
 
+    public TMP_Text TextInput;
+
     private void Awake()
     {
         Instance = this; 
+        
     }
 
     private void Start()
@@ -30,6 +34,8 @@ public class DataPersistenceManager : MonoBehaviour
     public void NewGame ()
     {
         this.gameData = new GameData();
+        AssignName.SetActive(true);
+        Time.timeScale = 0f;
     }
 
     public void LoadGame()
@@ -69,6 +75,14 @@ public class DataPersistenceManager : MonoBehaviour
     {
         IEnumerable<IDataPersistence> dataPersistenceObjects = FindObjectsOfType<MonoBehaviour>().OfType<IDataPersistence>();
         return new List<IDataPersistence>(dataPersistenceObjects);
+    }
+
+    public void CreatePlayerName()
+    {
+        PlayerPrefs.SetString("namaplayer", TextInput.text);
+        PlayerPrefs.Save();
+        Time.timeScale = 1f;
+        AssignName.SetActive(false);
     }
 }
 

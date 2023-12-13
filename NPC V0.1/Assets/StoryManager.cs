@@ -49,7 +49,7 @@ public class StoryManager : MonoBehaviour
 
     void Director_Stopped(PlayableDirector obj) 
     {
-        UIPanel.SetActive(true);
+/*        UIPanel.SetActive(true);*/
         SesudahStartStory(urutanStory);
         urutanStory++;
     }
@@ -57,7 +57,7 @@ public class StoryManager : MonoBehaviour
     void Director_Played(PlayableDirector obj)
     {
         sebelumStartStory(urutanStory);
-        UIPanel.SetActive(false);
+        
     }
 
     public void StoryOne() 

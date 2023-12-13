@@ -9,18 +9,13 @@ public class TriggerDialog : MonoBehaviour
     public PlayableDirector Timelines;
     public Message[] messages;
     
-    public string player;
+
     public Actor[] actors;
     /*    public List<string> actors = new List<string>();*/
 
     private void Start()
     {
-        actors[0].actorName = player;
-        Debug.Log(actors[0].actorName);
-       
-        PlayerPrefs.SetString("player", "Johnson");
-        PlayerPrefs.Save();
-        Debug.Log(PlayerPrefs.GetString("player"));
+
 
     }
     public void StartDialog () 
@@ -30,6 +25,7 @@ public class TriggerDialog : MonoBehaviour
                 Timeline.playableGraph.GetRootPlayable(0).SetSpeed(0f);*/
         
          Timelines.playableGraph.GetRootPlayable(0).Pause();
+        
     }
 
     public void resumeKlip ()

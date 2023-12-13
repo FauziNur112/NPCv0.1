@@ -25,23 +25,23 @@ public class DialogManager : MonoBehaviour
         currentActor = actors;
         activeMessage = 0;
         isActive = true;
-        DisplayMessagge();
-        
+        DisplayMessagge();    
     }
 
     void DisplayMessagge ()
     {
         dialogBox.SetActive(true);
+
         Message messageToDisplay = currentMessages[activeMessage];
         message.text = messageToDisplay.message;
-
-        Actor actorToDisplay = currentActor[messageToDisplay.actorId];
+        
         if (messageToDisplay.isPlayer)
         {
-            actorName.text = PlayerPrefs.GetString("player");
+            actorName.text = PlayerPrefs.GetString("namaplayer");
         }
         else
         {
+            Actor actorToDisplay = currentActor[messageToDisplay.actorId];
             actorName.text = actorToDisplay.actorName;
         }
         
