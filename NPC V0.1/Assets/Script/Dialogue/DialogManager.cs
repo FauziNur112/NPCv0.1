@@ -5,13 +5,14 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.Playables;
+using UnityEditor.VersionControl;
 
 public class DialogManager : MonoBehaviour
 {
     public TMP_Text actorName;
     public TMP_Text message;
     public GameObject dialogBox;
-    public PlayableDirector Timeline;
+/*    public PlayableDirector Timeline;*/
 
     Message[] currentMessages;
     Actor[] currentActor;
@@ -24,7 +25,6 @@ public class DialogManager : MonoBehaviour
         currentActor = actors;
         activeMessage = 0;
         isActive = true;
-        Debug.Log("Panjang pesan " + messages.Length);
         DisplayMessagge();
         
     }
@@ -36,7 +36,15 @@ public class DialogManager : MonoBehaviour
         message.text = messageToDisplay.message;
 
         Actor actorToDisplay = currentActor[messageToDisplay.actorId];
-        actorName.text = actorToDisplay.actorName;
+        if (messageToDisplay.isPlayer)
+        {
+            actorName.text = PlayerPrefs.GetString("player");
+        }
+        else
+        {
+            actorName.text = actorToDisplay.actorName;
+        }
+        
     } 
 
     public void NextMessage ()
@@ -52,7 +60,8 @@ public class DialogManager : MonoBehaviour
             dialogBox.SetActive(false);
             /*            Timeline.time = 1f;
                         Timeline.playableGraph.GetRootPlayable(0).SetSpeed(1f);*/
-            Timeline.playableGraph.GetRootPlayable(0).Play();
+            /*Timeline.playableGraph.GetRootPlayable(0).Play();*/
+            FindObjectOfType<TriggerDialog>().resumeKlip();
         }
     }
 

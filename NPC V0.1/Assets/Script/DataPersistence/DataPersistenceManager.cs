@@ -37,7 +37,6 @@ public class DataPersistenceManager : MonoBehaviour
         this.gameData = dataHandler.Load();
         if (this.gameData == null)
         {
-            Debug.Log("No Game Data Saved, Buat baru");
             NewGame();
         }
 

@@ -37,7 +37,7 @@ public class Objectives : MonoBehaviour
     public void actOne()
     {
         listGoal.Clear();
-        listGoal.Add("Selidiki Sumber Suara Kucing!");
+        listGoal.Add("Menuju Tempat Tidur untuk Istirahat");
         UpdateObjectives();
     }
 
