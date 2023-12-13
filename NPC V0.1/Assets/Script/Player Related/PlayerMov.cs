@@ -1,9 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.PackageManager.UI;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
-using static UnityEditor.Progress;
 
 public class PlayerMov : MonoBehaviour, IDataPersistence
 {

@@ -5,7 +5,6 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.Playables;
-using UnityEditor.VersionControl;
 
 public class DialogManager : MonoBehaviour
 {
