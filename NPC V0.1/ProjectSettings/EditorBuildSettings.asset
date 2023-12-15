@@ -12,15 +12,21 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 851a1e7fa894c2940a9547873dc96bf6
   - enabled: 1
-    path: Assets/Scenes/cutscene.unity
+    path: Assets/Scenes/CUTSCENE 1.unity
     guid: aa4b69b0b77044f49af30bea2766e75d
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MainHallway.unity
     guid: 91ba8195c50480d4491f518cc036ced9
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MainBedroom.unity
     guid: 6226b19def28e6d4eb05675c64ce5460
+  - enabled: 1
+    path: Assets/Scenes/EPILOG END CHAPTER 1.unity
+    guid: 63f0fb807eb242449a3ef0bf9eeda8cf
+  - enabled: 1
+    path: Assets/Scenes/CREDITGAME.unity
+    guid: 2bf3482b809b2844083cc09be88905d8
   m_configObjects: {}
