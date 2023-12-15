@@ -16,6 +16,6 @@ public class transiisi : MonoBehaviour
     {
         // Tindakan yang akan dijalankan saat tombol ditekan
         // Memuat scene selanjutnya
-        SceneManager.LoadScene("cutscene");
+        SceneManager.LoadScene("CUTSCENE 1");
     }
 }
