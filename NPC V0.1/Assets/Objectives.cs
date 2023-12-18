@@ -8,19 +8,22 @@ public class Objectives : MonoBehaviour
     public List<string> listGoal = new List<string>();
     public int checkedroom = 0;
     public GameObject listobj;
+    public GameObject listobj2;
 
     TMP_Text[] listTujuan;
+    TMP_Text[] listTujuan2;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        
         Debug.Log(listTujuan.Length);
     }
 
     private void Awake()
     { 
         listTujuan = listobj.GetComponentsInChildren<TMP_Text>();
+        listTujuan2 = listobj2.GetComponentsInChildren<TMP_Text>();
     }
 
     // Update is called once per frame
@@ -44,21 +47,21 @@ public class Objectives : MonoBehaviour
     public void actTwo()
     {
         listGoal.Clear();
-        listGoal.Add("Cari Tempat Tidurmu dan Tidur!");
+        listGoal.Add("Cek Sumber Suara!");
         UpdateObjectives();
     }
 
     public void actThree()
     {
         listGoal.Clear();
-        listGoal.Add("Cari Box Listrik dan Perbaiki!");
+        listGoal.Add("Kembali ke Kamar dan Tidur!");
         UpdateObjectives();
     }
 
     public void actFour()
     {
         listGoal.Clear();
-        listGoal.Add("Perbaiki Box Listrik Lagi!");
+        listGoal.Add("Perbaiki Box Listrik!");
         UpdateObjectives();
     }
 
@@ -90,8 +93,9 @@ public class Objectives : MonoBehaviour
         for (int i = 0; i < listGoal.Count; i++)
         {
             listTujuan[i + 1].text = listGoal[i];
+            listTujuan2[i + 1].text = listGoal[i];
         }
-        Debug.Log(" IsCalled ");
+
     }
 
 }

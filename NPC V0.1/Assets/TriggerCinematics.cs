@@ -5,20 +5,18 @@ using UnityEngine.Playables;
 
 public class TriggerCinematics : MonoBehaviour
 {
-    public PlayableDirector Act;
-    public GameObject skenariosatu;
+
+    public TriggerDialog skenario;
+    public StoryManager storyManager;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            /*Act.Play();*/
-            skenariosatu.GetComponent<TriggerDialog>().StartDialog(); 
-            gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            skenario.GetComponent<TriggerDialog>().StartDialog();
+            storyManager.SesudahStartStory(storyManager.IDstory+1);
+            this.GetComponent<BoxCollider2D>().enabled = false; 
         }
     }
 
-    public void EndThisTimeline ()
-    {
-        Act.Stop();
-    }
+
 }

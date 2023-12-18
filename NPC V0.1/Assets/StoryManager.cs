@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Rendering.Universal;
 
-public class StoryManager : MonoBehaviour
+public class StoryManager : MonoBehaviour, IDataPersistence
 {
     public PlayableDirector timelinePertama;
     public PlayableDirector timelineKedua;
@@ -17,10 +17,15 @@ public class StoryManager : MonoBehaviour
     public GameObject UIPanel;
     public GameObject[] tujuanPlayer;
     public GameObject markertujuan; 
-    public GameObject triggerActThree;
-    public GameObject triggerActFour;
 
-    public int urutanStory = 0;
+
+    public GameObject triggerActSuara;
+    public GameObject triggerActCekBoxs;
+    public GameObject triggerActLevelTwo;
+
+
+    public int urutanStory = -1;
+    public int IDstory;
 
 
     public Light2D lampuGlobal;
@@ -76,24 +81,24 @@ public class StoryManager : MonoBehaviour
             case 0:
                 objectives.actOne();
                 listTujuan.SetActive(true);
-                markertujuan.SetActive(true);
-                markertujuan.GetComponent<Marker>().OnChangeGoal(tujuanPlayer[0]);
+                triggerActSuara.SetActive(true);
+                IDstory = 0;
             break;
             
             case 1:
                 objectives.actTwo();
                 listTujuan.SetActive(true);
-                triggerActThree.SetActive(true);
+                triggerActSuara.SetActive(false);
+                triggerActCekBoxs.SetActive(true);
+                IDstory = 1;
+                /*               triggerActThree.SetActive(true);*/
                 break;
             case 2:
                 objectives.actThree();
                 listTujuan.SetActive(true);
-                lampuGlobal.enabled = true;
-                lampuGlobal.intensity = 0;
-                lampuSpotPlayer.enabled = true;
-                lampuSenter.enabled = true;
-                markertujuan.SetActive(true);
-                triggerActFour.SetActive(true);
+                triggerActCekBoxs.SetActive(false);
+                triggerActLevelTwo.SetActive(true);
+                IDstory = 2;
                 break;
             case 3:
                 listTujuan.SetActive(false);
@@ -109,11 +114,30 @@ public class StoryManager : MonoBehaviour
         switch (idStory)
         { 
             case 0:
-                markertujuan.SetActive(false);
+                
                 break;
             case 1:
                 Destroy(kucing);
                 break;
         }
+    }
+
+    public void LoadData(GameData data)
+    {
+        this.IDstory = data.storyID;
+        if (data.storyID != 0)
+        {
+            SesudahStartStory(this.IDstory);
+        }
+            
+/*        if (data.storyID == -1)
+        {
+            listTujuan.SetActive(false);
+        }*/
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.storyID = this.IDstory;
     }
 }

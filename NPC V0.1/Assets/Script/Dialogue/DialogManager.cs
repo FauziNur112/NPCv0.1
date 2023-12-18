@@ -5,18 +5,27 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.Playables;
+using System.Xml.Serialization;
 
 public class DialogManager : MonoBehaviour
 {
     public TMP_Text actorName;
     public TMP_Text message;
     public GameObject dialogBox;
+    public GameObject Statusbar;
+    public GameObject objektif;
 /*    public PlayableDirector Timeline;*/
 
     Message[] currentMessages;
     Actor[] currentActor;
     int activeMessage = 0;
     public static bool isActive = false;
+
+    public void FixedUpdate()
+    {
+        objektif.SetActive(!isActive);
+        Statusbar.SetActive(!isActive);
+    }
 
     public void OpenDialog(Message[] messages, Actor[] actors)
     {
@@ -60,7 +69,7 @@ public class DialogManager : MonoBehaviour
             /*            Timeline.time = 1f;
                         Timeline.playableGraph.GetRootPlayable(0).SetSpeed(1f);*/
             /*Timeline.playableGraph.GetRootPlayable(0).Play();*/
-            FindObjectOfType<TriggerDialog>().resumeKlip();
+            /*FindObjectOfType<TriggerDialog>().resumeKlip();*/
         }
     }
 

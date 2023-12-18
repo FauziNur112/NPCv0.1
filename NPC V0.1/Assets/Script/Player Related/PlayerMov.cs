@@ -65,6 +65,7 @@ public class PlayerMov : MonoBehaviour, IDataPersistence
         // Get the input axis values.
         float horizontalInput = Input.GetAxisRaw("Horizontal");
         float verticalInput = Input.GetAxisRaw("Vertical");
+ 
 
 /*        Debug.Log("Horizontal Input: " + horizontalInput);
         Debug.Log("Vertical Input: " + verticalInput);*/
@@ -308,10 +309,13 @@ public class PlayerMov : MonoBehaviour, IDataPersistence
     {
         this.currentSanity = data.currentSanity;
         sanitybar.SetSanity(currentSanity);
+        rb.position = data.Playerpos;
+        
     }
 
     public void SaveData(ref GameData data)
     {
         data.currentSanity = this.currentSanity;
+        data.Playerpos = rb.position;
     }
 }

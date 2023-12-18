@@ -23,14 +23,21 @@ public class TriggerDialog : MonoBehaviour
         FindObjectOfType<DialogManager>().OpenDialog(messages, actors);
         /*        Timeline = GetComponent<PlayableDirector>();
                 Timeline.playableGraph.GetRootPlayable(0).SetSpeed(0f);*/
-        
-         Timelines.playableGraph.GetRootPlayable(0).Pause();
+/*        if (Timelines != null)
+        {
+            Timelines.playableGraph.GetRootPlayable(0).Pause();
+        }*/
+         
         
     }
 
     public void resumeKlip ()
     {
-        Timelines.playableGraph.GetRootPlayable(0).Play();
+        if (Timelines != null)
+        {
+            Timelines.playableGraph.GetRootPlayable(0).Play();
+        }
+       
     }
 
 }

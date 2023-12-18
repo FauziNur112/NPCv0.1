@@ -11,6 +11,7 @@ public class DataPersistenceManager : MonoBehaviour
 
     public GameObject AssignName;
     private GameData gameData;
+    public GameObject square;
     private List<IDataPersistence> dataPersistenceObjects;
     public static DataPersistenceManager Instance { get; private set; }
 
@@ -35,6 +36,7 @@ public class DataPersistenceManager : MonoBehaviour
     {
         this.gameData = new GameData();
         AssignName.SetActive(true);
+        square.SetActive(true);
         Time.timeScale = 0f;
     }
 
@@ -83,6 +85,7 @@ public class DataPersistenceManager : MonoBehaviour
         PlayerPrefs.Save();
         Time.timeScale = 1f;
         AssignName.SetActive(false);
+        square.SetActive(false);
     }
 }
 

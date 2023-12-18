@@ -7,6 +7,8 @@ public class GameData
 {
     public int currentSenter;
     public int currentSanity;
+    public int storyID;
+    public Vector3 Playerpos;
     public List<Item> items ;
     public SeriableDictionary<string, bool> itemcollected;
 
@@ -14,5 +16,6 @@ public class GameData
     {
         items = new List<Item>();
         itemcollected = new SeriableDictionary<string, bool>();
+        storyID = -1;
     }
 }
