@@ -34,13 +34,24 @@ public class PlayerMov : MonoBehaviour, IDataPersistence
     public bool senternyalatidak;
     Light2D senterLight;
     SpriteRenderer senterorderoflayer;
+    AudioSource audioSource;
 
 
+
+
+
+    //
+
+    public float FootStepRatePlay;
+    AudioSource PlayerAudioSource;
+    public AudioClip[] FootSteps;
+    public float Timer;
     void Start()
     {
         sanitybar.SetMaxSanity(maxSanity);
         sanitybar.SetSanity(currentSanity);
         senterLight = senter.GetComponent<Light2D>();
+        audioSource = GetComponent<AudioSource>();
 /*        senterorderoflayer = Senter.GetComponent<SpriteRenderer>();*/
     }
 
@@ -88,49 +99,104 @@ public class PlayerMov : MonoBehaviour, IDataPersistence
             if (horizontalInput == -1)
             {
                 rotationAngle = 45f; // Up-Left
-
+                if (!audioSource.isPlaying)
+                {
+                    audioSource.Play();
+                }
+                else
+                {
+                    audioSource.Stop();
+                }
             }
             else if (horizontalInput == 1)
             {
                 rotationAngle = -45f; // Up-Right
-
+                if (!audioSource.isPlaying)
+                {
+                    audioSource.Play();
+                }
+                else
+                {
+                    audioSource.Stop();
+                }
             }
             else
             {
                 rotationAngle = 0f; // Up
+                if (!audioSource.isPlaying)
+                {
+                    audioSource.Play();
+                }
+                else
+                {
+                    audioSource.Stop();
+                }
             }
         }
         else if (verticalInput == -1)
         {
             if (horizontalInput == -1)
             {
-
-
                 rotationAngle = 135f; // Down-Left
+                if (!audioSource.isPlaying)
+                {
+                    audioSource.Play();
+                }
+                else
+                {
+                    audioSource.Stop();
+                }
             }
             else if (horizontalInput == 1)
             {
- 
-
                 rotationAngle = -135f; // Down-Right
+                if (!audioSource.isPlaying)
+                {
+                    audioSource.Play();
+                }
+                else
+                {
+                    audioSource.Stop();
+                }
             }
             else
             {
-
-
                 rotationAngle = 180f; // Down
 /*                senterorderoflayer.sortingOrder = 2*/;
+                if (!audioSource.isPlaying)
+                {
+                    audioSource.Play();
+                }
+                else
+                {
+                    audioSource.Stop();
+                }
             }
         }
         else if (horizontalInput == -1)
         {
-
-
             rotationAngle = 90f; // Left
+            if (!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
+            else
+            {
+                audioSource.Stop();
+            }
         }
         else if (horizontalInput == 1)
         {
             rotationAngle = -90f; // Right
+
+            if (!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
+            else
+            {
+                audioSource.Stop();
+            }
         }
         /*   if (Input.GetKeyDown(KeyCode.E))
            {
