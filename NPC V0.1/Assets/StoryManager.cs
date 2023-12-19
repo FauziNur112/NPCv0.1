@@ -115,16 +115,16 @@ public class StoryManager : MonoBehaviour, IDataPersistence
             case 3:
                 objectives.actFour();
                 triggerhantu.SetActive(true);
-                triggerActSuara.SetActive(false); ;
+                triggerActSuara.SetActive(false); 
                 listTujuan.SetActive(false);
                 lampuSpotPlayer.enabled=true;
                 lampuSenter.enabled=false;
                 lampuGlobal.intensity=0;
                 markertujuan.SetActive(false);
-                IDstory=3;
                 playerbar.SetActive(true);
                 markersloc = GameObject.Find("Electrical Wires ");
                 markerArrow.GetComponent<MovePoint>().relocate(markersloc);
+                IDstory = 3;
                 break;
             case 4:
                 objectives.actFive();

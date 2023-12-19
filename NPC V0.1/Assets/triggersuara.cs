@@ -12,7 +12,7 @@ public class triggersuara : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            suara.SetActive(true);
+            this.GetComponent<AudioSource>().Play();
             this.GetComponent<BoxCollider2D>().enabled = false;
 
         }

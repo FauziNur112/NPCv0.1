@@ -16,6 +16,7 @@ public class cinematics : MonoBehaviour
         {
             listing.SetActive(false);
             toLevelTwo.Play();
+            this.gameObject.SetActive(false);
         }
     }
 }
