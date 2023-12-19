@@ -16,16 +16,21 @@ public class StoryManager : MonoBehaviour, IDataPersistence
     public GameObject listTujuan;
     public GameObject UIPanel;
     public GameObject[] tujuanPlayer;
-    public GameObject markertujuan; 
+    public GameObject markertujuan;
+    private GameObject markersloc;
+    public GameObject playerbar;
+
 
 
     public GameObject triggerActSuara;
     public GameObject triggerActCekBoxs;
     public GameObject triggerActLevelTwo;
+    public GameObject triggerhantu;
 
 
     public int urutanStory = -1;
     public int IDstory;
+    public GameObject markerArrow;
 
 
     public Light2D lampuGlobal;
@@ -82,6 +87,8 @@ public class StoryManager : MonoBehaviour, IDataPersistence
                 objectives.actOne();
                 listTujuan.SetActive(true);
                 triggerActSuara.SetActive(true);
+                GameObject targetObject = GameObject.Find("Main Bedroom Bedding");
+                markerArrow.GetComponent<MovePoint>().relocate(targetObject);                
                 IDstory = 0;
             break;
             
@@ -90,6 +97,8 @@ public class StoryManager : MonoBehaviour, IDataPersistence
                 listTujuan.SetActive(true);
                 triggerActSuara.SetActive(false);
                 triggerActCekBoxs.SetActive(true);
+                 markersloc = GameObject.Find("Warehouse Boxes");
+                markerArrow.GetComponent<MovePoint>().relocate(markersloc);
                 IDstory = 1;
                 /*               triggerActThree.SetActive(true);*/
                 break;
@@ -98,13 +107,21 @@ public class StoryManager : MonoBehaviour, IDataPersistence
                 listTujuan.SetActive(true);
                 triggerActCekBoxs.SetActive(false);
                 triggerActLevelTwo.SetActive(true);
+                 markersloc = GameObject.Find("Main Bedroom Bedding");
+                markerArrow.GetComponent<MovePoint>().relocate(markersloc);
                 IDstory = 2;
                 break;
             case 3:
+                objectives.actFour();
                 listTujuan.SetActive(false);
-                lampuSpotPlayer.enabled=false;
+                lampuSpotPlayer.enabled=true;
                 lampuSenter.enabled=false;
+                lampuGlobal.intensity=0;
                 markertujuan.SetActive(false);
+                IDstory=3;
+                playerbar.SetActive(true);
+                markersloc = GameObject.Find("Electrical Wires");
+                markerArrow.GetComponent<MovePoint>().relocate(markersloc);
                 break;
         }
     }
@@ -125,10 +142,10 @@ public class StoryManager : MonoBehaviour, IDataPersistence
     public void LoadData(GameData data)
     {
         this.IDstory = data.storyID;
-        if (data.storyID != 0)
-        {
+
             SesudahStartStory(this.IDstory);
-        }
+        lampuGlobal.intensity = data.intentsitasLampuGlobal;
+
             
 /*        if (data.storyID == -1)
         {
@@ -139,5 +156,6 @@ public class StoryManager : MonoBehaviour, IDataPersistence
     public void SaveData(ref GameData data)
     {
         data.storyID = this.IDstory;
+        data.intentsitasLampuGlobal = lampuGlobal.intensity;
     }
 }

@@ -16,7 +16,7 @@ public class Interactable : MonoBehaviour, IDataPersistence
     Transform player;
     public Transform InteractionTransform;
     public bool hasInteracted = false;
-    public SenterBar senterBar;
+
     public bool diambil = false;
     public bool wasPickedUp;
 

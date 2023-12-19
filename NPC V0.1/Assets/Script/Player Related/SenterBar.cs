@@ -15,8 +15,11 @@ public class SenterBar : MonoBehaviour, IDataPersistence
     private void Start()
     {
 
+        Senterslider.maxValue = maxSenter;
+        Senterslider.value = currentSenter;
+/*
         SetMaxSenter(maxSenter);
-        setSenter(currentSenter);
+        setSenter(currentSenter);*/
     }
 
     void Update()
@@ -27,16 +30,16 @@ public class SenterBar : MonoBehaviour, IDataPersistence
         {
             if (PlayerMov.senternyalatidak)
             {
-                Debug.Log("Sampai disini berhasil");
+
                 StartCoroutine("SenterPower");
-                powerBerkurang= true;
+                powerBerkurang = true;
             }
             else
             {
                 StopCoroutine("SenterPower");
             }
-        } 
-        
+        }
+
     }
     public void SetMaxSenter(int senter)
     {
@@ -73,6 +76,7 @@ public class SenterBar : MonoBehaviour, IDataPersistence
     public void LoadData(GameData data)
     {
         this.currentSenter = data.currentSenter;
+        setSenter(currentSenter);
     }
 
     public void SaveData(ref GameData data)

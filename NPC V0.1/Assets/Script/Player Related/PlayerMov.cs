@@ -176,7 +176,7 @@ public class PlayerMov : MonoBehaviour, IDataPersistence
         }*/
 
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.F))
         {
             // Periksa apakah pemain memiliki item "Senter" dalam inventori
             if (Inventory.Instance.HasItem("Senter"))
@@ -223,7 +223,7 @@ public class PlayerMov : MonoBehaviour, IDataPersistence
             }
             else
             {
-                Debug.Log("LU KAGAK PUNYA BATRE COK");
+     
             }
         }
 

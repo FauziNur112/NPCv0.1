@@ -16,6 +16,8 @@ public class cinematics : MonoBehaviour
         {
             listing.SetActive(false);
             toLevelTwo.Play();
+            GameObject markers = GameObject.Find("MarkerTujuan");
+            markers.SetActive(false);
         }
     }
 }

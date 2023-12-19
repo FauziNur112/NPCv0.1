@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class SanityBar : MonoBehaviour
 {
     public Slider Sanityslider;
-
+    public PlayerMov playercontrol;
+    public StoryManager storymanager;
     public void SetMaxSanity (int sanity)
     {
         Sanityslider.maxValue = sanity;
@@ -18,4 +19,27 @@ public class SanityBar : MonoBehaviour
         Sanityslider.value = sanity;
     }
 
+    void Update ()
+    {
+        if (playercontrol.senternyalatidak == false && storymanager.lampuGlobal.intensity < 11.2f)
+        {
+            StartCoroutine("SenterOffDamage", playercontrol);
+        } else
+        {
+            StopCoroutine("SenterOffDamage");
+        }
+    }
+
+    IEnumerator SenterOffDamage( PlayerMov playercontrol)
+    {
+        while (playercontrol.senternyalatidak == false && storymanager.lampuGlobal.intensity < 11.2f)
+        {
+            yield return new WaitForSeconds(1);
+            int banyakdamage = 2;
+            playercontrol.TakeDamage(banyakdamage);
+            yield return new WaitForSeconds(1);
+        }
+
+
+    }
 }

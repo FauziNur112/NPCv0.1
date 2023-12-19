@@ -22,7 +22,7 @@ public class EnemyViaAudio : MonoBehaviour
     void Update()
     {
         distances = Vector3.Distance(Player.position, Enemy.position);
-        if (distances < 100)
+        if (distances < 40)
         {
             if (!Dekatmusuh)
             {
@@ -43,9 +43,14 @@ public class EnemyViaAudio : MonoBehaviour
 
     IEnumerator AudioDamage(float distances, PlayerMov playercontrol)
     {
-        while (distances < 100)
+        while (distances < 40)
         {
-            playercontrol.TakeDamage(2);
+            int banyakdamage = 5;
+            if (distances < 20)
+            {
+                banyakdamage = 15;
+            }
+            playercontrol.TakeDamage(banyakdamage);
             yield return new WaitForSeconds(1);
         }
         Debug.Log("Masih Jalan");

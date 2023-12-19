@@ -8,4 +8,5 @@ public class OnSinarSpot : MonoBehaviour
     {
         gameObject.SetActive(true);
     }
+   
 }
