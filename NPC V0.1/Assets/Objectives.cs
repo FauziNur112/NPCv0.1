@@ -68,14 +68,14 @@ public class Objectives : MonoBehaviour
     public void actFive()
     {
         listGoal.Clear();
-        listGoal.Add("Cari Box Listrik dan Perbaiki!");
+        listGoal.Add("Cek Sumeber Suara!");
         UpdateObjectives();
     }
 
     public void actSix()
     {
         listGoal.Clear();
-        listGoal.Add("Selidiki Sumber Suara!");
+        listGoal.Add("Cepat Kabur ke Kamar!");
         UpdateObjectives();
     }
 

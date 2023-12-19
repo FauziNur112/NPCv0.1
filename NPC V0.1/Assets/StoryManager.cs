@@ -19,6 +19,7 @@ public class StoryManager : MonoBehaviour, IDataPersistence
     public GameObject markertujuan;
     private GameObject markersloc;
     public GameObject playerbar;
+    public GameObject triggertolevelthree;
 
 
 
@@ -113,6 +114,8 @@ public class StoryManager : MonoBehaviour, IDataPersistence
                 break;
             case 3:
                 objectives.actFour();
+                triggerhantu.SetActive(true);
+                triggerActSuara.SetActive(false); ;
                 listTujuan.SetActive(false);
                 lampuSpotPlayer.enabled=true;
                 lampuSenter.enabled=false;
@@ -120,7 +123,24 @@ public class StoryManager : MonoBehaviour, IDataPersistence
                 markertujuan.SetActive(false);
                 IDstory=3;
                 playerbar.SetActive(true);
-                markersloc = GameObject.Find("Electrical Wires");
+                markersloc = GameObject.Find("Electrical Wires ");
+                markerArrow.GetComponent<MovePoint>().relocate(markersloc);
+                break;
+            case 4:
+                objectives.actFive();
+                listTujuan.SetActive(true);
+                markertujuan.SetActive(true);
+                IDstory = 4;
+                markersloc = GameObject.Find("Main Bedroom Bedding");
+                markerArrow.GetComponent<MovePoint>().relocate(markersloc);
+                triggertolevelthree.SetActive(true);
+                break;
+            case 5:
+                objectives.actSix();
+                listTujuan.SetActive(true);
+                markertujuan.SetActive(true);
+                IDstory = 5;
+                markersloc = markersloc = GameObject.Find("Main Bedroom Bedding");
                 markerArrow.GetComponent<MovePoint>().relocate(markersloc);
                 break;
         }

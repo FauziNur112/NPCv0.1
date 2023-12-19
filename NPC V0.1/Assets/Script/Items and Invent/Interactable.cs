@@ -75,7 +75,7 @@ public class Interactable : MonoBehaviour, IDataPersistence
 
         /*Jika interaksi terjadi (true) dan player input key 'I', maka item ditambahkan ke list inventory dan item 
         yang berada di scene akan dihapus*/
-        if (hasInteracted && Input.GetKeyDown(KeyCode.I))
+        if (hasInteracted && Input.GetKeyDown(KeyCode.E))
         {
             wasPickedUp  = Inventory.Instance.Add(item);
 

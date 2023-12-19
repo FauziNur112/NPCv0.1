@@ -6,6 +6,7 @@ using UnityEngine.Rendering.Universal;
 public class PlayerMov : MonoBehaviour, IDataPersistence
 {
     public int maxSanity = 100;
+    private int minSanity = 0;
     public int currentSanity;
     public SanityBar sanitybar;
 
@@ -62,6 +63,7 @@ public class PlayerMov : MonoBehaviour, IDataPersistence
 
     void Update()
     {
+        currentSanity = Mathf.Clamp(currentSanity, minSanity, maxSanity);
         // Get the input axis values.
         float horizontalInput = Input.GetAxisRaw("Horizontal");
         float verticalInput = Input.GetAxisRaw("Vertical");

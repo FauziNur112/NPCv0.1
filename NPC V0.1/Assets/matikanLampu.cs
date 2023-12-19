@@ -6,6 +6,7 @@ public class matikanLampu : MonoBehaviour
 {
     public StoryManager StoryManager;
     public int CountOff = 0;
+    public GameObject obyektif;
     
     // Start is called before the first frame update
     private void OnTriggerEnter2D(Collider2D collision)
@@ -13,6 +14,7 @@ public class matikanLampu : MonoBehaviour
         if (collision.CompareTag("Player") && CountOff < 2)
         {
             StoryManager.lampuGlobal.intensity = 0;
+            obyektif.SetActive(true);
             CountOff++;
         }
     }
