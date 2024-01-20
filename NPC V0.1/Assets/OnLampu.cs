@@ -12,6 +12,8 @@ public class OnLampu : MonoBehaviour
     public StoryManager storyManager;
     public GameObject keenam;
     public GameObject triggermati;
+    public GameObject triggerlangkahkaki;
+    public GameObject listobyek;
 
     public matikanLampu matikanLampu;
     private void OnDrawGizmosSelected()
@@ -53,9 +55,12 @@ public class OnLampu : MonoBehaviour
             triggermati.SetActive(true);
             storyManager.lampuGlobal.intensity = 11.2f;
             hantu.SetActive(false);
-            if (matikanLampu.CountOff >1)
+            listobyek.SetActive(false);
+            if (matikanLampu.CountOff == 2)
             {
                 triggermati.SetActive(false);
+                triggerlangkahkaki.SetActive(true);
+
             }
             
         }

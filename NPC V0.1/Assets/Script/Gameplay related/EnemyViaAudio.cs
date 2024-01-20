@@ -46,7 +46,7 @@ public class EnemyViaAudio : MonoBehaviour
         while (distances < 40)
         {
             int banyakdamage = 5;
-            if (distances < 20)
+            if (distances < 10)
             {
                 banyakdamage = 15;
             }

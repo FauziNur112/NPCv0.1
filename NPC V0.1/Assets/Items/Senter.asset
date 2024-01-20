@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Senter
   m_EditorClassIdentifier: 
   name: Senter
-  Icon: {fileID: 21300000, guid: faedd55fb5ccb4340b7c58f4685d8be4, type: 3}
+  Icon: {fileID: 21300000, guid: 87e140921d6835d4aae3368e901cc1bc, type: 3}
   IsDefaultItem: 0

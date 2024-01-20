@@ -6,12 +6,15 @@ public class triggersuara : MonoBehaviour
 {
 
     public GameObject suara;
+
     // Start is called before the first frame update
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            suara.GetComponent<AudioSource>().Play(); 
+            this.GetComponent<AudioSource>().Play();
+            this.GetComponent<BoxCollider2D>().enabled = false;
+
         }
     }
 }
